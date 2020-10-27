@@ -32,8 +32,6 @@ where n(t) is the number of series at time t, and r is rbar. Multiplication of t
   A \code{data.frame} with the variance stabilized chronology, running interseries correlation (`if \code{running.bar=TRUE}), and the sample depth.
 }
 \references{
-  Add Frank refs from TRACE and GRL.
-  
   Frank, D., Esper, J., Cook, E.R., (2006) \emph{On variance adjustments in tree-ring chronology development}. Tree rings in archaeology, climatology and ecology, TRACE 4, 56–66.
   
   Frank, D., Esper, J., Cook, E.R., (2007) \emph{Adjustment for proxy number and coherence in a large-scale temperature reconstruction}. Geophysical Research Letters 34, https://doi.org/10.1029/2007GL030571
@@ -44,6 +42,9 @@ where n(t) is the number of series at time t, and r is rbar. Multiplication of t
 
   Fritts, H. C. (2001) \emph{Tree Rings and Climate}.  Blackburn.
   \acronym{ISBN-13}: 978-1-930665-39-2.
+  
+  Wigley, T.M.L., Briffa, K.R., Jones, P.D., (1984) \emph{On the Average Value of Correlated Time Series, with Applications in Dendroclimatology and Hydrometeorology}. J. Climate Appl. Meteor. 23, 201–213. https://doi.org/10.1175/1520-0450
+
 }
 \author{ David Frank. Patched and improved by Andy Bunn and Stefan Klesse. 
 }
