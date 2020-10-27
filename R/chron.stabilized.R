@@ -30,13 +30,20 @@
         rbar <- mean(xCorrelMat, na.rm =TRUE) #rbar
         
         # replacing original call to zoo:rollapply with a loop
-        movingRbarVec <- rep(NA,nrow(x0))
-        for(i in 1:(nrow(x0)-winLength+1)){
-            movingRbarVec[i+(winLength-1)/2] <- rbarWinLength(x0[i:(i+winLength-1),])
-        }
+          if(winLength%%2 != 1){
+              for(i in 1:(nrow(x0)-winLength+1)){
+                  movingRbarVec[i+(winLength-1)/2] <- rbarWinLength(x0[i:(i+winLength-1),])
+              } 
+          }else{
+              for(i in 1:(nrow(x0)-winLength)){
+                  movingRbarVec[i+(winLength)/2] <- rbarWinLength(x0[i:(i+winLength),])
+              } 
+          }
+        
         # replacing original call to na.locf
         #fill first winLength/2 values with first value
-        movingRbarVec[1:(winLength-1)/2] <- movingRbarVec[(winLength-1)/2 + 1]
+        movingRbarVec[1:((winLength-1)/2)] <- movingRbarVec[(winLength-1)/2 + 1]
+        
         #fill last winLength/2 values with last value
         movingRbarVec[(i+(winLength-1)/2):nrow(x0)] <- movingRbarVec[i+(winLength-1)/2]
         movingRbarVec[nSamps==0] <- NA
@@ -47,7 +54,6 @@
         # and also if rbar goes negative effsamplesize gets larger than samplesize, 
         # and this brings it back down. But needed now with changes to orig func?
         
-        nSampsEffSimple <- nSamps/(1+(nSamps-1)*rbar)
         
         # res
         RUNNINGadjustedchronology <- xCrn*(nSampsEff*rbar)^.5
