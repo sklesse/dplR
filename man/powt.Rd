@@ -54,14 +54,14 @@ powt(rwl, method = "universal", rescale = FALSE,
   The procedure above is modified with \code{method="universal"} where all samples 
   are used simultaneously in a linear mixed-effects model with time (year)
   as a random effect: \code{lmer(log S ~ log M + (1|year)}. This "universal" or 
-  "singal free" approach accounts for the common year effect across all of the 
+  "signal free" approach accounts for the common year effect across all of the 
   series in \code{rwl} and should address that not every year has the same 
-  change in environmental conditions to the previous year. 
+  change in environmental conditions to the previous year. It also ensures that all series are transformed equally.
   
   The \code{rescale} argument will return the series with a mean and standard
   deviation that matches the input data. While this is a common convention,
   users should note that this can produce negative values which can be confusing
-  if thought of as "ring widths."
+  if thought of as "ring widths". Negative values will also prevent the \code{detrend} function from working as planned.
 
 }
 \references{
