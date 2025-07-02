@@ -58,10 +58,16 @@ universalPOWT<-function (rwl, rescale = FALSE, return.power=FALSE)
     Xt <- x
     X.nna <- which(!is.na(x))
     X <- na.omit(x)
-    X2 <- X^p
+    if(p>0 ) {
+      X2 <- X^p
     Xt[X.nna] <- X2
     Xt
-    
+    }
+    if(p<=0 ) {
+      X2 <- log(X)
+      Xt[X.nna] <- X2
+      Xt
+    }
   }
   
   p<-fit.lm(rwl)
